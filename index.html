@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Joseph & Stanlys Computer Shop</title>
+
+<style>
+
+body{
+font-family:Arial;
+margin:0;
+background:#f4f6f9;
+text-align:center;
+}
+
+header{
+background:#0b3d91;
+color:white;
+padding:15px;
+}
+
+/* PAGES */
+
+.page{
+display:none;
+}
+
+.active{
+display:block;
+}
+
+/* LOGIN BOX */
+
+.container{
+width:320px;
+margin:50px auto;
+background:white;
+padding:20px;
+border-radius:10px;
+box-shadow:0 4px 10px rgba(0,0,0,0.2);
+}
+
+input{
+width:90%;
+padding:10px;
+margin:8px;
+border-radius:5px;
+border:1px solid #ccc;
+}
+
+button{
+padding:10px 20px;
+background:#0b3d91;
+color:white;
+border:none;
+border-radius:5px;
+cursor:pointer;
+}
+
+button:hover{
+background:#1a5ad7;
+}
+
+/* PRODUCTS */
+
+.products{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:20px;
+padding:30px;
+}
+
+.product{
+background:white;
+padding:15px;
+width:240px;
+border-radius:10px;
+box-shadow:0 4px 10px rgba(0,0,0,0.2);
+}
+
+.product img{
+width:200px;
+height:140px;
+object-fit:contain;
+}
+
+.price{
+color:#0b3d91;
+font-weight:bold;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+<h1>Joseph & Stanlys Computer Shop</h1>
+</header>
+
+<!-- LOGIN PAGE -->
+
+<div id="loginPage" class="page active">
+
+<div class="container">
+
+<h2>Login</h2>
+
+<input type="text" id="loginUser" placeholder="Username">
+
+<input type="password" id="loginPass" placeholder="Password">
+
+<button onclick="login()">Login</button>
+
+<p>No account? <a href="#" onclick="showSignup()">Sign Up</a></p>
+
+</div>
+
+</div>
+
+<!-- SIGNUP PAGE -->
+
+<div id="signupPage" class="page">
+
+<div class="container">
+
+<h2>Sign Up</h2>
+
+<input type="text" id="newUser" placeholder="Create Username">
+
+<input type="password" id="newPass" placeholder="Create Password">
+
+<button onclick="signup()">Create Account</button>
+
+<p>Already have account? <a href="#" onclick="showLogin()">Login</a></p>
+
+</div>
+
+</div>
+
+<!-- WELCOME PAGE -->
+
+<div id="welcomePage" class="page">
+
+<h2 id="welcomeMessage"></h2>
+
+<p>Welcome to Joseph & Stanlys Computer Shop</p>
+
+<button onclick="openStore()">Enter Laptop Store</button>
+
+</div>
+
+<!-- LAPTOP STORE -->
+
+<div id="storePage" class="page">
+
+<h2>Available Laptops</h2>
+
+<div class="products">
+
+<div class="product">
+<h3>HP EliteBook</h3>
+<img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/HP_EliteBook_840_G6.png">
+<p class="price">KSh 45,000</p>
+<button onclick="buyLaptop('HP EliteBook')">Buy</button>
+</div>
+
+<div class="product">
+<h3>Dell XPS 13</h3>
+<img src="https://upload.wikimedia.org/wikipedia/commons/4/48/Dell_XPS_13_2021.png">
+<p class="price">KSh 50,000</p>
+<button onclick="buyLaptop('Dell XPS 13')">Buy</button>
+</div>
+
+<div class="product">
+<h3>Lenovo ThinkPad</h3>
+<img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Lenovo_ThinkPad_X1_Carbon_6th_Gen.jpg">
+<p class="price">KSh 52,000</p>
+<button onclick="buyLaptop('Lenovo ThinkPad')">Buy</button>
+</div>
+
+<div class="product">
+<h3>HP Pavilion</h3>
+<img src="https://upload.wikimedia.org/wikipedia/commons/8/8a/HP_Pavilion_Laptop.png">
+<p class="price">KSh 47,000</p>
+<button onclick="buyLaptop('HP Pavilion')">Buy</button>
+</div>
+
+<div class="product">
+<h3>Dell Inspiron</h3>
+<img src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Dell_Inspiron_15_3000.png">
+<p class="price">KSh 42,000</p>
+<button onclick="buyLaptop('Dell Inspiron')">Buy</button>
+</div>
+
+<div class="product">
+<h3>Apple MacBook Air</h3>
+<img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/MacBook_Air.png">
+<p class="price">KSh 95,000</p>
+<button onclick="buyLaptop('MacBook Air')">Buy</button>
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+/* USER DATA */
+
+let savedUser="";
+let savedPass="";
+
+/* PAGE CONTROL */
+
+function showPage(page){
+
+document.getElementById("loginPage").classList.remove("active");
+document.getElementById("signupPage").classList.remove("active");
+document.getElementById("welcomePage").classList.remove("active");
+document.getElementById("storePage").classList.remove("active");
+
+document.getElementById(page).classList.add("active");
+
+}
+
+/* NAVIGATION */
+
+function showSignup(){
+showPage("signupPage");
+}
+
+function showLogin(){
+showPage("loginPage");
+}
+
+/* SIGNUP */
+
+function signup(){
+
+savedUser=document.getElementById("newUser").value;
+savedPass=document.getElementById("newPass").value;
+
+if(savedUser=="" || savedPass==""){
+alert("Fill all fields");
+return;
+}
+
+alert("Account created successfully");
+
+showPage("loginPage");
+
+}
+
+/* LOGIN */
+
+function login(){
+
+let user=document.getElementById("loginUser").value;
+let pass=document.getElementById("loginPass").value;
+
+if(user===savedUser && pass===savedPass){
+
+document.getElementById("welcomeMessage").innerHTML="Welcome back "+user;
+
+showPage("welcomePage");
+
+}else{
+
+alert("Incorrect login details");
+
+}
+
+}
+
+/* OPEN STORE */
+
+function openStore(){
+showPage("storePage");
+}
+
+/* BUY */
+
+function buyLaptop(name){
+
+alert("You selected "+name);
+
+}
+
+</script>
+
+</body>
+</html>
