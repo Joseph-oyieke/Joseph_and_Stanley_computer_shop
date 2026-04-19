@@ -99,7 +99,7 @@
     <div class="container">
         <h2>Login to your Account</h2>
         <p style="font-size: 0.8em; color: #666;"></p>
-        <input type="text" id="loginUser" placeholder="Username">
+        <input type="text" id="loginUser" placeholder="Username"> 
         <input type="password" id="loginPass" placeholder="Password">
         <button onclick="loginProcedure()">Login</button>
         <p>No account? <a href="#" onclick="showPage('signupPage')">Sign Up to Create Account</a></p>
@@ -108,7 +108,7 @@
 
 <div id="signupPage" class="page">
     <div class="container">
-        <h2>Sign Up</h2>
+        <h2>Sign Up to Create Account</h2>
         <input type="text" id="newUser" placeholder="Create Username">
         <input type="password" id="newPass" placeholder="Create Password">
         <button onclick="signupProcedure()">Create Account</button>
@@ -119,48 +119,56 @@
 <div id="welcomePage" class="page">
     <div class="container">
         <h2 id="greet"></h2>
-        <button onclick="showPage('storePage')">View Laptops</button>
+        <button onclick="showPage('storePage')">View Laptops of Your Choice</button>
     </div>
 </div>
 
 <div id="storePage" class="page">
-    <h2>Available Laptops</h2>
+    <h2>Available Laptops In The Store</h2>
+
     <div class="products">
+
         <div class="product">
             <h3>HP EliteBook</h3>
             <img src="https://images.unsplash.com/photo-1589561084283-930aa7b1ce50?q=80&w=500">
-            <p class="price">KSh 45,000</p>
-            <button onclick="buyingProcedure('HP EliteBook', 45000)">Buy Now</button>
+            <p class="price">KSh 25,000</p>
+            <button onclick="buyingProcedure('HP EliteBook', 25000)">Buy Now</button>
         </div>
+
         <div class="product">
             <h3>Lenovo ThinkPad</h3>
             <img src="https://images.unsplash.com/photo-1541807084-5c52b6b3adef?q=80&w=500">
-            <p class="price">KSh 52,000</p>
-            <button onclick="alert('Item Selected')">Buy</button>
+            <p class="price">KSh 19,000</p>
+            <button onclick="buyingProcedure('Lenovo ThinkPad', 19000)">Buy Now</button>
         </div>
+
         <div class="product">
             <h3>Dell XPS 13</h3>
             <img src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?q=80&w=500">
-            <p class="price">KSh 50,000</p>
-            <button onclick="buyingProcedure('Dell XPS 13', 50000)">Buy Now</button>
+            <p class="price">KSh 30,000</p>
+            <button onclick="buyingProcedure('Dell XPS 13', 30000)">Buy Now</button>
         </div>
+
         <div class="product">
             <h3>Dell Inspiron</h3>
             <img src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?q=80&w=500">
-            <p class="price">KSh 42,000</p>
-            <button onclick="alert('Item Selected')">Buy</button>
+            <p class="price">KSh 23,000</p>
+            <button onclick="buyingProcedure('Dell Inspiron', 23000)">Buy Now</button>
         </div>
+
         <div class="product">
             <h3>ASUS ZenBook</h3>
             <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?q=80&w=500">
-            <p class="price">KSh 60,000</p>
+            <p class="price">KSh 30,000</p>
             <button onclick="buyingProcedure('ASUS ZenBook', 60000)">Buy Now</button>
         </div>
+
     </div>
+
 </div>
 
 <script>
-    // Variables to store the account created during Signup
+   
     let registeredUser = "";
     let registeredPass = "";
     let isLoggedIn = false;
@@ -171,7 +179,6 @@
         document.getElementById(pageId).classList.add("active");
     }
 
-    // SIGNUP PROCEDURE: Saves the data to variables
     function signupProcedure() {
         let user = document.getElementById("newUser").value;
         let pass = document.getElementById("newPass").value;
@@ -187,12 +194,12 @@
         showPage('loginPage');
     }
 
-    // LOGIN PROCEDURE: Checks if input matches the Signup variables
+
     function loginProcedure() {
         let user = document.getElementById("loginUser").value;
         let pass = document.getElementById("loginPass").value;
 
-        // Validation Logic
+    
         if (registeredUser === "") {
             alert("No account found. Please Sign Up first.");
             showPage('signupPage');
@@ -205,10 +212,10 @@
         }
     }
 
-    // BUYING PROCEDURE
+
     function buyingProcedure(name, price) {
         if (!isLoggedIn) {
-            alert("Security Error: You must be logged in to purchase.");
+            alert("Error: You must be logged in to purchase.");
             showPage('loginPage');
             return;
         }
@@ -218,6 +225,7 @@
             alert("Thank you! Your " + name + " order is confirmed.");
         }
     }
+    
 </script>
 
 </body>
