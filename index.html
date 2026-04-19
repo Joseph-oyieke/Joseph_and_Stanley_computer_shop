@@ -274,6 +274,22 @@
         }
     }
 
+    function changeSlide(btn,dir){
+    let slides=btn.parentElement.querySelectorAll(".slide");
+    let index=0;
+    slides.forEach((s,i)=>{
+
+        if(s.classList.contains("active")) index=i;
+        s.classList.remove("active");
+    }
+    );
+    
+    index+=dir;
+    if(index<0) index=slides.length-1;
+    if(index>=slides.length) index=0;
+    slides[index].classList.add("active");
+}
+
 </script>
 
 </body>
