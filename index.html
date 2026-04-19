@@ -230,7 +230,7 @@
                 <img class="slide active" src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=500&auto=format">
                 <img class="slide" src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500&auto=format">
                 <img class="slide" src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=500&auto=format">
-                
+
                 <button class="prev" onclick="changeSlide(this,-1)">❮</button>
                 <button class="next" onclick="changeSlide(this,1)">❯</button>
             </div>
@@ -320,21 +320,44 @@
         }
     }
 
-    function changeSlide(btn,dir){
-    let slides=btn.parentElement.querySelectorAll(".slide");
-    let index=0;
-    slides.forEach((s,i)=>{
+function changeSlide(btn,dir){
+    let slider=btn.closest(".slider");
+    let slides=slider.querySelectorAll(".slide");
 
+    let index=0;
+
+    slides.forEach((s,i)=>{
         if(s.classList.contains("active")) index=i;
         s.classList.remove("active");
-    }
-    );
+    });
 
     index+=dir;
+
     if(index<0) index=slides.length-1;
     if(index>=slides.length) index=0;
+
     slides[index].classList.add("active");
 }
+
+setInterval(()=>{
+    document.querySelectorAll(".slider").forEach(slider=>{
+        let slides=slider.querySelectorAll(".slide");
+
+        let index=0;
+
+        slides.forEach((s,i)=>{
+            if(s.classList.contains("active")) index=i;
+            s.classList.remove("active");
+        });
+
+        index++;
+
+        if(index>=slides.length) index=0;
+
+        slides[index].classList.add("active");
+    });
+},3000);
+
 
 </script>
 
