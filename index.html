@@ -85,6 +85,40 @@
             font-weight: bold; 
             font-size: 1.2em; 
         }
+        .slider {
+            position: relative;
+        }
+
+        .slide {
+            display: none;
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .slide.active {
+            display: block;
+        }
+
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.5);
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .prev { 
+            left: 5px; 
+        }
+
+        .next { 
+            right: 5px; 
+        }
 
     </style>
 
@@ -128,7 +162,7 @@
         <h2 id="greet"></h2>
         <button onclick="showPage('storePage')">View Laptops of Your Choice</button>
     </div>
-    
+
 </div>
 
 <div id="storePage" class="page">
@@ -138,9 +172,15 @@
 
         <div class="product">
             <h3>HP EliteBook</h3>
-            <img src="https://images.unsplash.com/photo-1589561084283-930aa7b1ce50?q=80&w=500">
+            <div class="slider">
+                <img class="slide active" src="https://images.unsplash.com/photo-1589561084283-930aa7b1ce50?w=500">
+                <img class="slide" src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=500">
+                <img class="slide" src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=500">
+                <button class="prev" onclick="changeSlide(this,-1)">❮</button>
+                <button class="next" onclick="changeSlide(this,1)">❯</button>
+            </div>
             <p class="price">KSh 25,000</p>
-            <button onclick="buyingProcedure('HP EliteBook', 25000)">Buy Now</button>
+            <button onclick="buyingProcedure('HP EliteBook',25000)">Buy</button>
         </div>
 
         <div class="product">
