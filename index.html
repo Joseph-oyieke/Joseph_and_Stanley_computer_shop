@@ -1,11 +1,10 @@
-<!DOCTYPE html>
-
+  <!DOCTYPE html>
+<html>
 <head>
+    <title>Joseph Shop</title>
 
-    <title>Joseph & Stanly's Computer Shop</title>
     <style>
-
-             /* --- CSS VARIABLES (For Dark Mode) --- */
+    
         :root {
             --bg-color: #f8f9fa;
             --card-bg: #ffffff;
@@ -18,210 +17,170 @@
             --bg-color: #121212;
             --card-bg: #1e1e1e;
             --text-color: #e0e0e0;
+            --text-align: left;
             --accent: #ffc107;
             --nav-bg: #000000;
         }
 
-        body { 
-            background-color: var(--bg-color); 
-            color: var(--text-color); 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            margin: 0; 
+        body {
+            background: var(--bg-color);
+            color: var(--text-color);
+            font-family: Arial;
+            margin: 0;
+            text-align: center;
             transition: 0.4s;
         }
 
-        body { 
-            font-family: 'Segoe UI', Arial, sans-serif; 
-            margin: 0; 
-            background: #f4f6f9; 
-            text-align: center; 
-            color: #333; 
-        }
-
-        header { 
+        header {
             background: #0b3d91;
-            color: white; 
-            padding: 15px; 
-        }
-        
-        .page { 
-            display: none; 
-            padding: 20px; 
-        }
-
-        .active { 
-            display: block; 
-        }
-
-        .container { 
-            width: 320px; 
-            margin: 50px auto; 
-            background: white; 
-            padding: 30px; 
-            border-radius: 12px; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+            color: white;
+            padding: 15px;
         }
 
         
-        .card { 
-            background: var(--card-bg); 
-            padding: 30px; 
-            border-radius: 12px; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+        nav {
+            background: var(--nav-bg);
+            color: white;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
         }
 
-        input { 
-            width: 90%; 
-            padding: 12px; 
-            margin: 10px 0; 
-            border-radius: 6px; 
-            border: 1px solid #ccc; 
-        }
-        
-        button { 
-            padding: 12px 25px; 
-            background: #0b3d91; 
-            color: white; 
-            border: none; 
-            border-radius: 6px; 
-            cursor: pointer; 
+        nav a {
+            color: white;
+            margin: 10px;
+            text-decoration: none;
         }
 
-        button:hover { 
-            background: #1a5ad7; 
+    
+        .hero {
+            background: linear-gradient(45deg, var(--accent), purple);
+            color: white;
+            padding: 60px;
         }
 
-        .products { 
-            display: flex; 
-            flex-wrap: wrap; 
-            justify-content: center; 
-            gap: 20px; 
-            padding: 20px; 
+        #slider-text {
+            font-size: 2rem;
         }
 
-        .product { 
-            background: white; 
-            padding: 15px; 
-            width: 250px; 
-            border-radius: 10px; 
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+
+        .page { display: none; }
+        .active { display: block; }
+
+        .container {
+            width: 300px;
+            margin: 40px auto;
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 10px;
         }
 
-        .product img { 
-            width: 100%; 
-            height: 160px; 
-            object-fit: cover; 
-            border-radius: 8px; 
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 10px;
         }
 
-        .price { 
-            color: #0b3d91; 
-            font-weight: bold; 
-            font-size: 1.2em; 
+        button {
+            padding: 10px 20px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            cursor: pointer;
         }
-        .slider {
-            position: relative;
+
+
+        .products {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
         }
+
+        .product {
+            width: 250px;
+            margin: 15px;
+            padding: 15px;
+            background: var(--card-bg);
+            border-radius: 10px;
+        }
+
+    
+        .slider { position: relative; }
 
         .slide {
             display: none;
             width: 100%;
-            height: 160px;
-            object-fit: cover;
+            height: 150px;
             border-radius: 8px;
         }
 
-        .slide.active {
-            display: block;
-        }
-
-            /* Hero Slider Section */
-        .hero {
-            height: 400px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(45deg, var(--accent), #6610f2);
-            color: white;
-            text-align: center;
-            flex-direction: column;
-        }
-        #slider-text { 
-            font-size: 2.5rem; 
-            transition: opacity 0.5s; 
-        }
-
+        .slide.active { display: block; }
 
         .prev, .next {
             position: absolute;
             top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0,0,0,0.5);
+            background: black;
             color: white;
             border: none;
-            padding: 5px 10px;
             cursor: pointer;
         }
 
-        .prev { 
-            left: 5px; 
-        }
+        .prev { left: 5px; }
+        .next { right: 5px; }
 
-        .next { 
-            right: 5px; 
+        .price {
+            font-weight: bold;
         }
-
     </style>
-
 </head>
+
 <body>
 
 <header>
-
-    <h1>Joseph & Stanly's Computer Shop In Kaimosi Friends University(KAFU)</h1>
-
+    <h1>Joseph Computer's Shop In Kaimosi Friends University(KAFU)</h1>
 </header>
-    <nav>
-        <div style="color: white; font-size: 1.5rem;">BCS 225 Project</div>
-        <div>
-            <a href="#">Home</a>
-            <a href="#contact">Contact</a>
-            <button onclick="toggleTheme()" style="padding: 5px 10px; margin-left: 15px;">🌓 Mode</button>
-        </div>
-    </nav>
+
+<nav class="navbar navbar-expand-lg pt-4">
+    <div class="container">
+        <span class="navbar-brand fw-bold"></span>
+        <button class="btn btn-outline-dark" id="themeBtn" onclick="toggleTheme()">🌙Dark Mode</button>
+    </div>
+</nav>
+
+
+ <div class="hero">
+    <h1 id="slider-text">Innovating Web Apps</h1>
+    <p class="lead">BUILT BY JOSEPH OTIENO</p>
+</div>
+
 
 <div id="loginPage" class="page active">
-
     <div class="container">
-        <h2>Login to your Account</h2>
-        <p style="font-size: 0.8em; color: #666;"></p>
-        <input type="text" id="loginUser" placeholder="Username">
-        <input type="password" id="loginPass" placeholder="Password">
+        <h2>Login To Your Account</h2>
+        <input id="loginUser" placeholder="Username">
+        <input id="loginPass" type="password" placeholder="Password">
         <button onclick="loginProcedure()">Login</button>
-        <p>No account? <a href="#" onclick="showPage('signupPage')">Sign Up to Create Account</a></p>
+        <p>No Account? <a href="#" onclick="showPage('signupPage')">Sign Up To Create Account</a></p>
     </div>
-
 </div>
+
 
 <div id="signupPage" class="page">
-
     <div class="container">
-        <h2>Sign Up to Create Account</h2>
-        <input type="text" id="newUser" placeholder="Create Username">
-        <input type="password" id="newPass" placeholder="Create Password">
-        <button onclick="signupProcedure()">Create Account</button>
+        <h2>Sign Up To Create An Account</h2>
+        <input id="newUser" placeholder="Username">
+        <input id="newPass" type="password" placeholder="Password">
+        <button onclick="signupProcedure()">Create An Account</button>
         <p>Already have an account? <a href="#" onclick="showPage('loginPage')">Login</a></p>
     </div>
-
 </div>
 
-<div id="welcomePage" class="page">
 
+<div id="welcomePage" class="page">
     <div class="container">
         <h2 id="greet"></h2>
-        <button onclick="showPage('storePage')">View Laptops of Your Choice</button>
+        <button onclick="showPage('storePage')"> View Laptops Of Your Choice</button>
     </div>
-
 </div>
 
 <div id="storePage" class="page">
@@ -229,25 +188,22 @@
 
     <div class="products">
 
-
         <div class="product">
-
             <h3>HP EliteBook</h3>
-            <div class="slider">
-                <img class="slide active" src="https://images.unsplash.com/photo-1589561084283-930aa7b1ce50?w=500">
-                <img class="slide" src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=500">
-                <img class="slide" src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=500">
-                <button class="prev" onclick="changeSlide(this,-1)">❮</button>
-                <button class="next" onclick="changeSlide(this,1)">❯</button>
 
+            <div class="slider">
+                    <img class="slide active" src="https://images.unsplash.com/photo-1589561084283-930aa7b1ce50?w=500">
+                    <img class="slide" src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=500">
+                    <img class="slide" src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=500">
+
+                    <button class="prev" onclick="changeSlide(this,-1)">❮</button>
+                    <button class="next" onclick="changeSlide(this,1)">❯</button>
             </div>
             <p class="price">KSh 25,000</p>
-            <button onclick="buyingProcedure('HP EliteBook',25000)">Buy</button>
+            <button onclick="buyingProcedure('HP',25000)">Buy</button>
         </div>
 
-
         <div class="product">
-
             <h3>Lenovo ThinkPad</h3>
 
             <div class="slider">
@@ -263,9 +219,7 @@
             <button onclick="buyingProcedure('Lenovo ThinkPad', 19000)">Buy Now</button>
         </div>
 
-
         <div class="product">
-
             <h3>Dell XPS 13</h3>
 
             <div class="slider">
@@ -281,8 +235,7 @@
             <button onclick="buyingProcedure('Dell XPS 13',30000)">Buy Now</button>
         </div>
 
-        <div class="product">
-
+          <div class="product">
             <h3>Dell Inspiron</h3>
 
             <div class="slider">
@@ -296,10 +249,9 @@
 
             <p class="price">KSh 23,000</p>
             <button onclick="buyingProcedure('Dell Inspiron', 23000)">Buy Now</button>
-        </div>       
-
+        </div>  
+        
         <div class="product">
-
             <h3>ASUS ZenBook</h3>
 
             <div class="slider">
@@ -314,124 +266,105 @@
             <p class="price">KSh 30,000</p>
             <button onclick="buyingProcedure('ASUS ZenBook', 30000)">Buy Now</button>
         </div>
-   
 
     </div>
-
 </div>
 
 <script>
 
-      // 1. Dark Mode Toggle Logic
-    function toggleTheme() {
-            document.body.classList.toggle('dark-theme');
-        }
-    
-        // 2. Dynamic Slider Logic
-    const slides = ["Innovating Web Apps", "Mastering JavaScript", "Database Integration"];
-        let i = 0;
-        setInterval(() => {
-            i = (i + 1) % slides.length;
-            document.getElementById('slider-text').innerText = slides[i];
-        }, 3000);
 
-   
-    let registeredUser = "";
-    let registeredPass = "";
-    let isLoggedIn = false;
+function toggleTheme() {
+    document.body.classList.toggle("dark-theme");
 
-    function showPage(pageId) {
-        let pages = document.querySelectorAll(".page");
-        pages.forEach(p => p.classList.remove("active"));
-        document.getElementById(pageId).classList.add("active");
+    const btn = document.getElementById('themeBtn');
+
+    if (document.body.classList.contains("dark-theme")) {
+        btn.innerText = "☀️ Light Mode";
+    } else {
+        btn.innerText = "🌙 Dark Mode";
     }
+}
 
-    function signupProcedure() {
-        let user = document.getElementById("newUser").value;
-        let pass = document.getElementById("newPass").value;
 
-        if (user.trim() === "" || pass.trim() === "") {
-            alert("Please fill in both fields to create an account.");
-            return;
-        }
+const texts = ["Welcome to Joseph's Website", "Interactive JavaScript", "Secure PHP Backend", "MySQL Integration","Innovating Web Apps", "Learning JavaScript", "Building Systems"];
+let t = 0;
 
-        registeredUser = user;
-        registeredPass = pass;
-        alert("Account created successfully for " + user + "! Now please login.");
-        showPage('loginPage');
+setInterval(() => {
+    t = (t + 1) % texts.length;
+    document.getElementById("slider-text").innerText = texts[t];
+}, 3000);
+
+
+let user = "", pass = "", loggedIn = false;
+
+function signupProcedure() {
+    user = document.getElementById("newUser").value;
+    pass = document.getElementById("newPass").value;
+    alert("Account created Successfully!");
+    showPage("loginPage");
+}
+
+function loginProcedure() {
+    let u = document.getElementById("loginUser").value;
+    let p = document.getElementById("loginPass").value;
+
+    if (u === user && p === pass) {
+        loggedIn = true;
+        document.getElementById("greet").innerText = "Welcome Back," + user + "!";
+        showPage("welcomePage");
+    } else {
+        alert("No Account Found For The User.Sign Up!  ");
     }
+}
 
 
-    function loginProcedure() {
-        let user = document.getElementById("loginUser").value;
-        let pass = document.getElementById("loginPass").value;
+function showPage(id) {
+    document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
+    document.getElementById(id).classList.add("active");
+}
 
-    
-        if (registeredUser === "") {
-            alert("No account found. Please Sign Up first.");
-            showPage('signupPage');
-        } else if (user === registeredUser && pass === registeredPass) {
-            isLoggedIn = true;
-            document.getElementById("greet").innerText = "Welcome back, " + user + "!";
-            showPage('welcomePage');
-        } else {
-            alert("Incorrect username or password. Try again.");
-        }
+
+function buyingProcedure(name, price) {
+    if (!loggedIn) {
+        alert("Login first!");
+        return;
     }
+    alert("Bought " + name);
+}
 
 
-    function buyingProcedure(name, price) {
-        if (!isLoggedIn) {
-            alert("Error: You must be logged in to purchase.");
-            showPage('loginPage');
-            return;
-        }
-
-        let confirmBuy = confirm("Confirm purchase of " + name + " for KSh " + price.toLocaleString() + "?");
-        if (confirmBuy) {
-            alert("Thank you! Your " + name + " order is confirmed.");
-        }
-    }
-
-function changeSlide(btn,dir){
-    let slider=btn.closest(".slider");
-    let slides=slider.querySelectorAll(".slide");
-
-    let index=0;
+function changeSlide(btn, dir) {
+    let slides = btn.parentElement.querySelectorAll(".slide");
+    let index = 0;
 
     slides.forEach((s,i)=>{
         if(s.classList.contains("active")) index=i;
         s.classList.remove("active");
     });
 
-    index+=dir;
+    index += dir;
 
-    if(index<0) index=slides.length-1;
-    if(index>=slides.length) index=0;
+    if(index < 0) index = slides.length-1;
+    if(index >= slides.length) index = 0;
 
     slides[index].classList.add("active");
 }
 
+
 setInterval(()=>{
     document.querySelectorAll(".slider").forEach(slider=>{
-        let slides=slider.querySelectorAll(".slide");
-
-        let index=0;
+        let slides = slider.querySelectorAll(".slide");
+        let index = 0;
 
         slides.forEach((s,i)=>{
             if(s.classList.contains("active")) index=i;
             s.classList.remove("active");
         });
 
-        index++;
-
-        if(index>=slides.length) index=0;
-
+        index = (index + 1) % slides.length;
         slides[index].classList.add("active");
     });
 },3000);
-
-
 </script>
 
 </body>
